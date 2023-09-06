@@ -1,0 +1,37 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",                     
+    "module": "commonjs",                   
+    "lib": ["es2017","DOM"],                       
+    "allowJs": true,               
+    "baseUrl": "./",                     
+    "jsx": "react-native",   
+    "strict": true,
+    "paths": { 
+      "@src/*": ["./src/*"],
+    
+      "@redux/*": ["./src/redux/*"],
+      "@screens/*": ["./src/screens/*"],
+      "@components/*": ["./src/components/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@constants/*": ["./src/validations/*"],
+      "@core-ui/*": ["./src/core-ui/*"],
+      "@navigations/*": ["./src/navigations/*"],
+
+     
+      "@redux": ["./src/redux/index"],
+      "@screens": ["./src/screens/index"],
+      "@constants": ["./src/constants/index"],
+      "@helpers": ["./src/helpers/index"],
+      "@navigations": ["./src/navigations/index"],
+      "@core-ui": ["./src/core-ui/index"],
+      "@components": ["./src/components/index"],
+      "@hooks": ["./src/hooks/index"],
+    }
+  },
+  "exclude": [
+    "node_modules", "babel.config.js", "metro.config.js", "jest.config.js"
+  ]
+}
