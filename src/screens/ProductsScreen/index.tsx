@@ -1,7 +1,7 @@
 import { SafeAreaView } from "@core-ui";
 import React, { useEffect, useState } from "react";
 
-import { View, Text, FlatList, Image } from "react-native";
+import { View, Text, FlatList, Image, Alert } from "react-native";
 import { CategoryCard, PreviewModal, ProductCard, SearchBar } from './components'
 import { useProducts } from "@hooks";
 import { categoryColors } from '@constants'
@@ -30,9 +30,13 @@ const ProductsScreen: React.FC = () => {
     useEffect(() => {
         setProductsData(products)
         setProductsFilteredViaCategory(products)
-
-
     }, [products])
+    useEffect(()=>{
+        Alert.alert("Tip !","Please tap the category item to view products of same category and double tap same item to revert changes",[{style:'destructive'},
+{style:'cancel',text:'Cancel'},
+{text:'Got It'}
+])
+    },[])
 
     const RenderItem = ({ item, index }: { item: string, index: number }) => {
 
@@ -51,12 +55,15 @@ const ProductsScreen: React.FC = () => {
     const FilterViaCategory = (category: string) => {
         if (selectedCategory == category) {
             setProductsData(products)
+            setProductsFilteredViaCategory(products)
+
             setSelectedCategory('')
         }
         else {
             const filter = products.filter((item: any) => item.category == category)
             setProductsData(filter)
             setSelectedCategory(category)
+            setProductsFilteredViaCategory(filter)
         }
 
     }
